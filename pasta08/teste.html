@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista 08</title>
+    <script>
+       
+        function acesso() {
+          
+            user1 = {nome: txtUser.value, senha: txtPwd.value};
+            
+            if (typeof(Storage) != "undefined") {
+                localStorage.setItem("usuario1",JSON.stringify(user1));
+                usuario1 = localStorage.getItem("usuario1");
+                if (!usuario1) 
+                alert("Não existe nenhum valor armazenado para a CHAVE 'usuario1'");
+            else {
+                usuario1 = JSON.parse(usuario1);
+        
+            }
+               if(!txtUser.value){
+                alert("Campo Usuário não preenchido!")
+                txtUser.focus();
+               }
+               else if(!txtPwd.value){
+                alert("Campo senha não preeenchido!")
+                txtPwd.focus();
+               }
+        
+        }
+        else alert("Navegador não oferece suporte a localStorage!!!");
+
+            }
+        
+    
+    </script>
+</head>
+<body>
+    <form>
+        <label for="txtNome">Usuario:</label>
+        <br>
+        <input type="text" name="NOME" id="txtUser">
+        <br>
+        <label for="txtSenha">Senha:</label>
+        <br>
+        <input type="password" name="SENHA" id="txtPwd">
+        <br><br>
+        <input type="button" value="Cadastrar"  onclick="acesso()">
+        <input type="reset" value="Limpar" name="limpar" id="limpar">
+
+        <br><br>
+        <a href="./listarUsuario.html">Mostrar usuario cadastrado!</a>
+
+    </form>
+</body>
+</html>
